@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #b1b1b1, #6e6e6e);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin: 20px 0 10px;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+.hearts {
+  font-size: 28px;
+  position: absolute;
+  animation: flutuar 4s ease-in-out infinite;
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+img.flutuante {
+  width: 200px;
+  height: auto;
+  border-radius: 16px;
+  margin: 15px;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.5);
+  animation: levitar 3s ease-in-out infinite alternate;
+}
+
+@keyframes levitar {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-15px); }
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 20px auto;
+  font-weight: 400;
+}
+
+p strong {
+  font-weight: 500;
+  color: #ffe066;
+}
+
+#play-btn {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#play-btn:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}

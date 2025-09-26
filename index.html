@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Aniversário ❤️</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      text-align: center;
+      background-color: #fff0f5; /* fundo suave */
+      color: #333;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3em;
+      color: #ff69b4;
+      margin: 10px 0;
+    }
+
+    .hearts {
+      font-size: 2em;
+      color: red;
+      display: inline-block;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    img {
+      max-width: 80%;   /* imagem não fica maior que 80% da tela */
+      height: auto;     /* mantém proporção */
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">❤️</div>
+  <h1>Feliz Aniversário, Iasmin</h1>
+  <div class="hearts">❤️</div>
+
+  <img src="foto.jpg" alt="Foto de vocês">
+
+  <p>
+    Hoje celebramos a sua vida, o presente mais lindo que já ganhei.  
+    Que seu dia seja <strong>iluminado</strong>, cheio de amor e alegrias!
+  </p>
+
+  <button onclick="document.getElementById('bg-music').play()">🎵 Tocar Música</button>
+  <audio id="bg-music" src="musica.mp3"></audio>
+</body>
+</html>
