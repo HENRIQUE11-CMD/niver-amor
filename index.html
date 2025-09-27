@@ -4,79 +4,215 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feliz Aniversário ❤️</title>
-  
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      background-color: #fff0f5; /* fundo suave */
-      color: #333;
-      padding: 20px;
-    }
-
-    h1 {
+      margin: 0;
+      height: 100vh;
       font-family: 'Poppins', sans-serif;
-      font-size: 3em;
-      color: #ff69b4;
-      margin: 10px 0;
+      overflow: hidden;
+      /* Fundo preto e branco degradê animado */
+      background: linear-gradient(270deg, #000000, #ffffff, #000000);
+      background-size: 600% 600%;
+      animation: gradientMove 15s ease infinite;
     }
 
-    .hearts {
-      font-size: 2em;
-      color: red;
-      display: inline-block;
-      margin: 10px 0;
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    p {
-      font-size: 1.2em;
-      line-height: 1.5;
-      max-width: 600px;
-      margin: 20px auto;
+    h2, #contador {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      font-size: 1.5rem;
+      z-index: 10;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
     }
 
-    img {
-      max-width: 80%;   /* imagem não fica maior que 80% da tela */
-      height: auto;     /* mantém proporção */
+    #contador {
+      display: none;
+    }
+
+    #final {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      display: none;
+      text-align: center;
+      opacity: 0;
+      transition: all 1s ease;
+      z-index: 20;
+    }
+
+    #final.show {
       display: block;
-      margin: 20px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
     }
 
-    button {
-      background-color: #ff69b4;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1.1em;
-      border-radius: 8px;
-      cursor: pointer;
+    #final img {
+      max-width: 85vw;
+      max-height: 70vh;
+      border-radius: 15px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.5);
+    }
+
+    #final p {
       margin-top: 15px;
-      transition: background-color 0.3s;
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+      background-color: rgba(0,0,0,0.3);
+      padding: 5px 10px;
+      border-radius: 8px;
+      display: inline-block;
     }
 
-    button:hover {
-      background-color: #ff1493;
+    .photo {
+      position: absolute;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+      animation: floatUp 6s linear infinite;
+      border: 2px solid white;
+      transition: transform 0.4s, opacity 0.4s;
+      z-index: 5;
+    }
+
+    .photo:hover {
+      transform: scale(1.1);
+    }
+
+    .explode {
+      transform: scale(2) rotate(360deg);
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      top: -10px;
+      animation: fall linear forwards;
+      z-index: 15;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    #brincadeira {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      font-size: 1rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      z-index: 50;
+      font-family: 'Poppins', sans-serif;
+      background-color: rgba(0,0,0,0.5);
+      padding: 3px 8px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <div class="hearts">❤️</div>
-  <h1>Feliz Aniversário, Iasmin</h1>
-  <div class="hearts">❤️</div>
+  <h2 id="titulo">Clique nas fotos 💘</h2>
+  <div id="contador">Faltam 5 fotos</div>
 
-  <img src="foto.jpg" alt="Foto de vocês">
+  <div id="final">
+    <img src="FOTO_FINAL.jpg" alt="Feliz Aniversário">
+    <p> 💘 Feliz Aniversário, meu amor 💘</p>
+  </div>
 
-  <p>
-    Hoje celebramos a sua vida, o presente mais lindo que já ganhei.  
-    Que seu dia seja <strong>iluminado</strong>, cheio de amor e alegrias!
-  </p>
+  <div id="brincadeira">deu trabalhokkkkkkkkkkk</div>
 
-  <button onclick="document.getElementById('bg-music').play()">🎵 Tocar Música</button>
-  <audio id="bg-music" src="musica.mp3"></audio>
+  <script>
+    let score = 0;
+    const finalDiv = document.getElementById("final");
+    const contador = document.getElementById("contador");
+    const titulo = document.getElementById("titulo");
+
+    const fotos = [
+      "foto1.jpg",
+      "foto2.jpg",
+      "foto3.jpg",
+      "foto4.jpg"
+    ];
+
+    function createPhoto() {
+      const img = document.createElement("img");
+      img.classList.add("photo");
+      img.src = fotos[Math.floor(Math.random() * fotos.length)];
+      img.style.left = Math.random() * 90 + "vw";
+      img.style.width = img.style.height = (60 + Math.random() * 60) + "px";
+      img.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+      img.addEventListener("click", () => {
+        score++;
+
+        if (score === 1) {
+          titulo.style.display = "none";
+          contador.style.display = "block";
+        }
+
+        img.classList.add("explode");
+        setTimeout(() => img.remove(), 400);
+
+        if (score < 5) {
+          contador.textContent = `Faltam ${5 - score} fotos`;
+        } else {
+          contador.textContent = "";
+          finalDiv.classList.add("show");
+          launchConfetti();
+        }
+      });
+
+      document.body.appendChild(img);
+      setTimeout(() => { if(document.body.contains(img)) img.remove(); }, 6000);
+    }
+
+    setInterval(createPhoto, 1000);
+
+    function launchConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement("div");
+        confetti.classList.add("confetti");
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.width = confetti.style.height = Math.random() * 8 + 4 + "px";
+        confetti.style.backgroundColor = randomColor();
+        confetti.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    function randomColor() {
+      const colors = ["#ffffff", "#cccccc", "#999999", "#666666", "#333333"];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+  </script>
 </body>
 </html>
+
+by: Israel De Iasmin
+
